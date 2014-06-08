@@ -26,7 +26,7 @@ Här följer några punkter som gör Slider-Access unik i jämförelse med de 3 
 
 Följ dessa instruktioner för att installera Slider-Access:
 
-1. Kopiera och klistra in denna kod i din <head>-tag.
+Kopiera och klistra in denna kod i din <head>-tag.
 
 
 ~~~
@@ -34,7 +34,7 @@ Följ dessa instruktioner för att installera Slider-Access:
 <script src="jsfader/js/jquery.js"></script>
 <script src="jsfader/js/jsfader.js"></script>
 ~~~
-2. Kopiera och klistra in denna kod i din <body>-tag. Varje <article>-stycke genererar 1 slide.
+Kopiera och klistra in denna kod i din <body>-tag. Varje <article>-stycke genererar 1 slide.
 
 ~~~
 <div id="jsfader">
@@ -70,7 +70,7 @@ Följ dessa instruktioner för att installera Slider-Access:
 		
 </div>
 ~~~
-3. Duplicera detta kodstycke för att öka antalet slides i Slider-Access.
+Duplicera detta kodstycke för att öka antalet slides i Slider-Access.
 
 ~~~
 <article class="jsfader-content">
