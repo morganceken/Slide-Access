@@ -26,7 +26,7 @@ Här följer några punkter som gör Slider-Access unik i jämförelse med de 3 
 
 Följ dessa instruktioner för att installera Slider-Access:
 
-Kopiera och klistra in denna kod i din <head>-tag.
+Kopiera och klistra in denna kod i din <blockquote><head></blockquote>-tag.
 
 
 ~~~
