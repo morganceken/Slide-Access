@@ -1,12 +1,10 @@
 # Slider-Access(ability)
 
-## DESCRIPTION
-
-JS-Fader är en supertillgänglig slideshow som är utvecklad och optimerad även för personer med funktionsnedsättning. Slideshowen innehåller tydliga kontroller, utmärkt stöd för skärmläsare och har även support för att lägga till egen text. Inte bara bilder.
+Slider-Access är en supertillgänglig slideshow som är utvecklad och optimerad även för personer med funktionsnedsättning. Slideshowen innehåller tydliga kontroller, utmärkt stöd för skärmläsare och har även support för att lägga till egen text. Inte bara bilder.
 
 Slideshowen använder sig endast av Fade-funktionen vilket är att föredra för personer med kognitiva problem.
 
-JS-Fader är helt enkelt ett utmärkt val för dig som prioriterar webbtillgänglighet!
+Slider-Access är helt enkelt ett utmärkt val för dig som prioriterar webbtillgänglighet!
 
 ## Funktioner och egenskaper:
 * Utmärkta kontroller med tydliga etiketter
@@ -17,7 +15,7 @@ JS-Fader är helt enkelt ett utmärkt val för dig som prioriterar webbtillgäng
 * Möjlighet att lägga in text
 
 ## Funktioner och egenskaper:
-Här följer några punkter som gör JS-fader unik i jämförelse med de 3 högt rankade slideshows på Google, SLIDERJS, WOW Slider och Cycle2:
+Här följer några punkter som gör Slider-Access unik i jämförelse med de 3 högt rankade slideshows på Google, SLIDERJS, WOW Slider och Cycle2:
 
 * Play och pause-knapp
 * Tillgängliga kontroller
@@ -26,7 +24,7 @@ Här följer några punkter som gör JS-fader unik i jämförelse med de 3 högt
 * Kognitivt annpassad
 
 
-Följ dessa instruktioner för att installera JS-Fader:
+Följ dessa instruktioner för att installera Slider-Access:
 
 1. Kopiera och klistra in denna kod i din <head>-tag.
 
@@ -54,7 +52,7 @@ Följ dessa instruktioner för att installera JS-Fader:
 	<article class="jsfader-content">
 		<img src="jsfader/img/bild.jpg" alt="">
 		<section class="jsfader-textarea">
-			<h1 class="js-fader-header">Rubrik</h1>
+			<h1 class="Slider-Access-header">Rubrik</h1>
 			<p>Text</p>
 			<a href="">Länk</a>
 		</section>	
@@ -72,13 +70,13 @@ Följ dessa instruktioner för att installera JS-Fader:
 		
 </div>
 ~~~
-3. Duplicera detta kodstycke för att öka antalet slides i JS-Fader.
+3. Duplicera detta kodstycke för att öka antalet slides i Slider-Access.
 
 ~~~
 <article class="jsfader-content">
 		<img src="jsfader/img/bild.jpg" alt="">
 		<section class="jsfader-textarea">
-			<h1 class="js-fader-header">Rubrik</h1>
+			<h1 class="Slider-Access-header">Rubrik</h1>
 			<p>Text</p>
 			<a href="">Länk</a>
 		</section>	
