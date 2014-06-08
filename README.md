@@ -1,13 +1,5 @@
 # Slider-Access(ability)
 
-* docu   :: [slideshow-s9.github.io](http://slideshow-s9.github.io)
-* source :: [github.com/slideshow-s9/slideshow](https://github.com/slideshow-s9/slideshow)
-* bugs   :: [github.com/slideshow-s9/slideshow/issues](https://github.com/slideshow-s9/slideshow/issues)
-* gem    :: [rubygems.org/gems/slideshow](https://rubygems.org/gems/slideshow)
-* rdoc   :: [rubydoc.info/gems/slideshow](http://rubydoc.info/gems/slideshow)
-* forum  :: [groups.google.com/group/webslideshow](http://groups.google.com/group/webslideshow)
-
-
 ## DESCRIPTION
 
 JS-Fader är en supertillgänglig slideshow som är utvecklad och optimerad även för personer med funktionsnedsättning. Slideshowen innehåller tydliga kontroller, utmärkt stöd för skärmläsare och har även support för att lägga till egen text. Inte bara bilder.
