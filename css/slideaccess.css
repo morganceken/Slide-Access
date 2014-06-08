@@ -1,0 +1,220 @@
+#slideaccess{
+	position: relative;
+	height: 100%;	
+	width: 100%;
+	z-index: 0;	
+} 
+
+/* slideaccess slides */
+
+#slideaccess .slideaccess-content{
+	left: 0;
+	min-width: 100%;
+	height: 100%;	
+	position: absolute;
+	top: 0;
+	z-index: 0;
+	overflow: hidden;
+
+}
+
+/* slideaccess text area */
+
+#slideaccess .slideaccess-textarea {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 96%;
+	padding: 15px;
+	padding-left: 2%;
+	padding-right: 2%;
+	z-index: 3;
+}
+
+#slideaccess .slideaccess-textarea h1{
+	margin: 0;
+	padding:0;
+}
+
+/* slideaccess images */
+
+#slideaccess .slideaccess-img-container{
+	vertical-align: top;
+}
+
+#slideaccess img{
+	position: absolute;
+	top: 0;
+	display: block;
+	width: 100%;
+	min-width: 100%;
+}
+
+/* slideaccess controls */
+
+#slideaccess #slideaccess-ctrls {
+	height: 100px;
+	top: 50%;
+	margin-top: -50px;
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+}
+
+#slideaccess  #slideaccess-play-btn, #slideaccess #slideaccess-pause-btn {
+	border: 3px solid white !important;
+	border-radius: 100px !important;
+	-webkit-border-radius: 100px !important;
+	-moz-border-radius: 100px !important;
+	color: white !important;
+	height: 94px !important;
+	left: 50%;
+	line-height: 30px !important;
+	margin-left: -50px !important;
+	margin-top: -47px !important;
+	position: absolute !important;
+	font-size: 60px !important;
+	font-weight: 100 !important;
+	text-align: center !important;
+	top: 50% !important;
+	width: 94px !important;
+	z-index: 1;
+}
+
+#slideaccess #slideaccess-play-btn {
+	background: #000 url('../img/ctrls/play.png');
+	background-repeat: no-repeat !important;
+	opacity: 0;
+}
+
+#slideaccess #slideaccess-pause-btn {
+	background: #000 url('../img/ctrls/pause.png');
+	background-repeat: no-repeat !important;
+	opacity: 0;
+}
+
+#slideaccess #slideaccess-play-btn:hover {
+	background: #000 url('../img/ctrls/play.png');
+	background-repeat: no-repeat !important;
+	opacity: 1 !important;
+}
+
+#slideaccess #slideaccess-pause-btn:hover  {
+	background: #000 url('../img/ctrls/pause.png');
+	background-repeat: no-repeat !important;
+	opacity: 1 !important;
+}
+
+#slideaccess #slideaccess-next-btn, #slideaccess #slideaccess-previous-btn {
+	border: 3px solid white !important;
+	border-radius: 54px !important;	
+	-webkit-border-radius: 54px !important;
+	-moz-border-radius: 54px !important;	
+	color: white !important;	
+	position: absolute !important;
+	font-size: 60px !important;
+	font-weight: 100 !important;
+	height: 54px !important;
+	margin-top: -27px !important;	
+	line-height: 30px !important;
+	opacity: 0.6;
+	text-align: center !important;	
+	top: 50% !important;
+	width: 54px !important;	
+}
+
+#slideaccess #slideaccess-next-btn:hover, #slideaccess #slideaccess-previous-btn:hover {
+	opacity: 1;
+}
+
+#slideaccess #slideaccess-next-btn, #slideaccess #slideaccess-next-btn:hover {
+	background: #222 url('../img/ctrls/next.png') !important;
+	background-repeat: no-repeat !important;
+	right: 20px !important;
+}
+
+#slideaccess #slideaccess-previous-btn {
+	background: #222 url('../img/ctrls/previous.png') !important;
+	background-repeat: no-repeat !important;
+	left: 20px;
+}
+
+/* slideaccess counter */
+
+#slideaccess #slideaccess-counter {
+	background: #000000;
+	color: #fff;
+	font-family: arial;
+	font-size: 13px;
+	opacity: 0.8;
+	padding: 7px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	position: absolute;
+	right: 10px;
+	top: 10px;	
+	z-index: 2;	
+}
+
+/* slideaccess hide class */
+
+#slideaccess .hidden {
+	display: none;
+	visibility: hidden;
+	z-index: -1;
+}
+
+/* slideaccess for tablets and smartphones */
+
+@media only screen and (max-width: 768px) {
+
+	/* slideaccess text area */
+	
+	#slideaccess .slideaccess-text{
+		background: #000000;
+		bottom: 0;		
+		display: table-cell;	
+		left: 0;		
+		opacity: 0.9;		
+		position: absolute;
+		width: 100%;
+	}
+	
+	/* slideaccess images */
+	
+	#slideaccess .slideaccess-img-container img {
+		max-width: 100% !important;
+		width: 100%;
+	}	
+	
+	/* slideaccess controls */	
+	
+	#slideaccess #slideaccess-ctrls{
+		display: none;
+		visibility: hidden;
+	}
+
+	/* slideaccess counter */	
+	
+	#slideaccess #slideaccess-counter {
+		bottom: initial;
+		left: initial;
+		right: 10px;
+		top: 10px;		
+	}
+	
+	/* slideaccess text area */
+	
+	#slideaccess .slideaccess-textarea {
+		padding-left: 2.5%;
+		padding-right: 2.5%;
+		width: 95%;
+	}	
+
+}
+
+/* slideaccess for smartphones */
+
+@media only screen and (max-width: 480px) {
+
+}
