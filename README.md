@@ -1,10 +1,10 @@
 # Slider-Access(ability)
 
-Slider-Access är en supertillgänglig slideshow som är utvecklad och optimerad även för personer med funktionsnedsättning. Slideshowen innehåller tydliga kontroller, utmärkt stöd för skärmläsare och har även support för att lägga till egen text. Inte bara bilder.
+Slide-Access är en supertillgänglig slideshow som är utvecklad och optimerad även för personer med funktionsnedsättning. Slideshowen innehåller tydliga kontroller, utmärkt stöd för skärmläsare och har även support för att lägga till egen text. Inte bara bilder.
 
 Slideshowen använder sig endast av Fade-funktionen vilket är att föredra för personer med kognitiva problem.
 
-Slider-Access är helt enkelt ett utmärkt val för dig som prioriterar webbtillgänglighet!
+Slide-Access är helt enkelt ett utmärkt val för dig som prioriterar webbtillgänglighet!
 
 ## Funktioner och egenskaper:
 * Utmärkta kontroller med tydliga etiketter
@@ -15,7 +15,7 @@ Slider-Access är helt enkelt ett utmärkt val för dig som prioriterar webbtill
 * Möjlighet att lägga in text
 
 ## Funktioner och egenskaper:
-Här följer några punkter som gör Slider-Access unik i jämförelse med de 3 högt rankade slideshows på Google, SLIDERJS, WOW Slider och Cycle2:
+Här följer några punkter som gör Slide-Access unik i jämförelse med de flesta slideshows på marknaden:
 
 * Play och pause-knapp
 * Tillgängliga kontroller
@@ -70,7 +70,7 @@ Kopiera och klistra in denna kod i din `<body>` -tag. Varje `<article>` generera
 		
 </div>
 ~~~
-Duplicera detta kodstycke för att öka antalet slides i Slider-Access.
+Duplicera detta kodstycke för att öka antalet slides i Slide-Access.
 
 ~~~
 <article class="jsfader-content">
