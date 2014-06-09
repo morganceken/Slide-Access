@@ -22,12 +22,11 @@
 
 #slideaccess .slideaccess-textarea {
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 96%;
-	padding: 15px;
-	padding-left: 2%;
-	padding-right: 2%;
+	top: 0;
+	right: 0;
+	width: 30%;
+	max-height: 100%;
+	min-height: 100%;
 	z-index: 3;
 }
 
@@ -143,16 +142,16 @@
 
 #slideaccess #slideaccess-counter {
 	background: #000000;
+	bottom: 10px;	
 	color: #fff;
 	font-family: arial;
 	font-size: 13px;
+	left: 10px;
 	opacity: 0.8;
 	padding: 7px;
 	padding-bottom: 3px;
 	padding-top: 3px;
 	position: absolute;
-	right: 10px;
-	top: 10px;	
 	z-index: 2;	
 }
 
@@ -167,18 +166,6 @@
 /* slideaccess for tablets and smartphones */
 
 @media only screen and (max-width: 768px) {
-
-	/* slideaccess text area */
-	
-	#slideaccess .slideaccess-text{
-		background: #000000;
-		bottom: 0;		
-		display: table-cell;	
-		left: 0;		
-		opacity: 0.9;		
-		position: absolute;
-		width: 100%;
-	}
 	
 	/* slideaccess images */
 	
@@ -206,8 +193,14 @@
 	/* slideaccess text area */
 	
 	#slideaccess .slideaccess-textarea {
-		padding-left: 2.5%;
-		padding-right: 2.5%;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		top: auto;
+		height: auto !important;
+		padding-left: 2.5% !important;
+		padding-right: 2.5% !important;
+		min-height: 0px;
 		width: 95%;
 	}	
 

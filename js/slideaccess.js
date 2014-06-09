@@ -36,20 +36,21 @@ $(document).ready(function(){
 			
 			/* Next slide function for Next-button. Pauses slideaccess */			
 			var cssInit = function() { 
-				$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess .slideaccess-img-container" ).eq(slideCurrent).width());
 				$( "#slideaccess-counter-current").text(options.slideaccess_start_slide)
 				$( "#slideaccess-counter-total").text(slidesTotal)
 				$( "#slideaccess" ).css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
 				$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+",0.8)"})	
+				$( "#slideaccess .slideaccess-textarea" ).css({"padding": options.slideaccess_textarea_padding})	
+				$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})	
 				$( "#slideaccess .slideaccess-textarea .slideaccess-header" ).css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_header_size+"px"})
 				$( "#slideaccess .slideaccess-textarea p" ).css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_font_size+"px"})
 				$( "#slideaccess .slideaccess-textarea a" ).css({"color":options.slideaccess_a_color, "font-size":options.slideaccess_font_size+"px"})									
 		        $('#slideaccess img').each(function(){  
 					$(this).css("max-height", options.slideaccess_height);
-					$(this).css("max-width", options.slideaccess_width);
-				});  
-	
+					$(this).css("max-width", options.slideaccess_img_width);
+				}); 				
 				$('#slideaccess').css("height", getLowestImg());
+				$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
 			
 			};			
 
@@ -96,9 +97,18 @@ $(document).ready(function(){
 					 if (newDimensions.width < options.slideaccess_width) {
 						
 						$('#slideaccess').css("height", $("#slideaccess img" ).height());
-						$('.slideaccess-content').css("height", $("#slideaccess img" ).height());			 
+						$('.slideaccess-content').css("height", $("#slideaccess img" ).height());				
+						$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})
 						}
 					}
+					$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
+					
+					if($( "#slideaccess" ).width() == options.slideaccess_width){
+						console.log("apapapa")
+						$( "#slideaccess" ).css("height", options.slideaccess_height)
+						$( "#slideaccess .slideaccess-content" ).css("height", options.slideaccess_height)
+					};
+				
 				} 
 			
 				else if (newDimensions.width < options.slideaccess_width) {
@@ -132,22 +142,17 @@ $(document).ready(function(){
 						$( "#slideaccess img" ).css("width", "100%");
 						$( "#slideaccess img" ).css("height", "");
 					}	
-					
-					var lowestImage = 999999999999999999;
+										
 					$('#slideaccess img').each(function(){ 
-		                if ($(this).height() < lowestImage){  
-		                lowestImage = $(this).height();  
-						}
-					});
-					
-					$('#slideaccess img').each(function(){ 
-						$(this).css("max-height", lowestImage);			
+						$(this).css("max-height", getLowestImg());			
 					});  			
 						
 					
 					$('#slideaccess').css("height", $("#slideaccess img" ).height());		
 					$('.slideaccess-content').css("height", $("#slideaccess img" ).height());
-					
+					$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
+					$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})
+				
 					});	
 				
 		        }
@@ -251,12 +256,15 @@ $(document).ready(function(){
 			
 				// Fixing height bug when spam refreshing browser
 				if($( "#slideaccess" ).height() == 0){
-				
-					$( "#slideaccess" ).css("height", options.slideaccess_height)
-					$( "#slideaccess" ).css("height", $( "#slideaccess img" ).height)
-					// $( "#slideaccess" ).css("height", getLowestImg())
-				
+					$( "#slideaccess" ).css("height", "340px")
+					
+					var newHeight = options.slideaccess_height / options.slideaccess_width * $( "#slideaccess" ).width()
+					$( "#slideaccess" ).css("height", newHeight)
+					console.log($( "#slideaccess" ).width())
+					
 				};	
+				
+								
 			};		
 			
 			/* Previous slide function */
@@ -341,17 +349,19 @@ $(document).ready(function(){
 	
 	/* Options for slideaccess */		
 	$.fn.slideaccess({
-		'slideaccess_duration':		5000,		// Slideshow speed.
-		'slideaccess_width':		940, 		// Slideshow width (px).
-		'slideaccess_height':		340,		// Slideshow height (px).
-		'slideaccess_fade_speed': 	300,		// Slideshow fade speed (px).
-		'slideaccess_start_slide': 	1,			// Slideshow start node. 1 is default.
-		'slideaccess_background':	'#000000',	// Slideshow background color.
-		'slideaccess_font_family': 	'arial',	// Slideshow font type.
-		'slideaccess_font_color': 	'#fff',		// Slideshow font size (px).
-		'slideaccess_font_size': 	16,			// Slideshow <p> size (px).		
-		'slideaccess_header_size': 	28,			// Slideshow header size (px).
-		'slideaccess_a_color': 		'#fff',		// Slideshow <a> color.
+		'slideaccess_duration':			5000,		// Slideshow speed.
+		'slideaccess_width':			940, 		// Slideshow width (px).
+		'slideaccess_height':			340,		// Slideshow height (px).
+		'slideaccess_img_width':		940, 		// Slideshow width (px).
+		'slideaccess_fade_speed': 		300,		// Slideshow fade speed (px).
+		'slideaccess_start_slide': 		1,			// Slideshow start node. 1 is default.
+		'slideaccess_background':		'#000000',	// Slideshow background color.
+		'slideaccess_textarea_padding':	15,			// Slideshow padding for the textarea.
+		'slideaccess_font_family': 		'arial',	// Slideshow font type.
+		'slideaccess_font_color': 		'#fff',		// Slideshow font size (px).
+		'slideaccess_font_size': 		16,			// Slideshow <p> size (px).		
+		'slideaccess_header_size': 		28,			// Slideshow header size (px).
+		'slideaccess_a_color': 			'#fff',		// Slideshow <a> color.
 	});
    
 });
