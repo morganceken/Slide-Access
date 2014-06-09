@@ -1,4 +1,4 @@
-# Slider-Access(ability)
+# Slide-Access(ability)
 
 Slide-Access är en supertillgänglig slideshow som är utvecklad och optimerad även för personer med funktionsnedsättning. Slideshowen innehåller tydliga kontroller, utmärkt stöd för skärmläsare och har även support för att lägga till egen text. Inte bara bilder.
 
@@ -24,7 +24,7 @@ Här följer några punkter som gör Slide-Access unik i jämförelse med de fle
 * Kognitivt annpassad
 
 
-Följ dessa instruktioner för att installera Slider-Access:
+Följ dessa instruktioner för att installera Slide-Access:
 
 Kopiera och klistra in denna kod i din `<head>` -tag.
 
@@ -52,7 +52,7 @@ Kopiera och klistra in denna kod i din `<body>` -tag. Varje `<article>` generera
 	<article class="jsfader-content">
 		<img src="jsfader/img/bild.jpg" alt="">
 		<section class="jsfader-textarea">
-			<h1 class="Slider-Access-header">Rubrik</h1>
+			<h1 class="Slide-Access-header">Rubrik</h1>
 			<p>Text</p>
 			<a href="">Länk</a>
 		</section>	
@@ -66,7 +66,7 @@ Kopiera och klistra in denna kod i din `<body>` -tag. Varje `<article>` generera
 		/ 
 		<span id="jsfader-counter-total"></span>
 	</div>
-	<!-- Slider counter -->	
+	<!-- END Slider counter -->	
 		
 </div>
 ~~~
@@ -76,10 +76,29 @@ Duplicera detta kodstycke för att öka antalet slides i Slide-Access.
 <article class="jsfader-content">
 		<img src="jsfader/img/bild.jpg" alt="">
 		<section class="jsfader-textarea">
-			<h1 class="Slider-Access-header">Rubrik</h1>
+			<h1 class="Slide-Access-header">Rubrik</h1>
 			<p>Text</p>
 			<a href="">Länk</a>
 		</section>	
 	</article>
+~~~
+Ändra inställningar i följande del i slideaccess.js:
+
+~~~
+$.fn.slideaccess({
+'slideaccess_duration': 5000,	// Slideshow speed.
+'slideaccess_width': 940, 		// Slideshow width (px).
+'slideaccess_height': 340,		// Slideshow height (px).
+'slideaccess_img_width': 940,	// Slideshow width (px).
+'slideaccess_fade_speed': 300,	// Slideshow fade speed (px).
+'slideaccess_start_slide': 1,	// Slideshow start node. 1 is default.
+'slideaccess_background': '#000000',	// Slideshow background color.
+'slideaccess_textarea_padding':	15,	// Slideshow padding for the textarea.
+'slideaccess_font_family': 'arial',	// Slideshow font type.
+'slideaccess_font_color': '#fff',	// Slideshow font size (px).
+'slideaccess_font_size': 16,	// Slideshow &lt;p&gt; size (px).		
+'slideaccess_header_size': 28,	// Slideshow header size (px).
+'slideaccess_a_color': '#fff',	// Slideshow &lt;a&gt; color.
+});
 ~~~
 Vid frågor, kontakta mig på morgan@ceken.se.
