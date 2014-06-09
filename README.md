@@ -98,7 +98,7 @@ $.fn.slideaccess({
 'slideaccess_font_color': '#fff',	// Slideshow font size (px).
 'slideaccess_font_size': 16,	// Slideshow &lt;p&gt; size (px).		
 'slideaccess_header_size': 28,	// Slideshow header size (px).
-'slideaccess_a_color': '#fff',	// Slideshow &lt;a&gt; color.
+'slideaccess_a_color': '#0080dd',	// Slideshow &lt;a&gt; color.
 });
 ~~~
 Vid frågor, kontakta mig på morgan@ceken.se.
