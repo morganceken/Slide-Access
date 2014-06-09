@@ -38,6 +38,7 @@ $(document).ready(function(){
 			var cssInit = function() { 
 				$( "#slideaccess-counter-current").text(options.slideaccess_start_slide)
 				$( "#slideaccess-counter-total").text(slidesTotal)
+				$('#slideaccess .slideaccess-content').eq(slideCurrent).css("z-index", 1);
 				$( "#slideaccess" ).css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
 				$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+",0.8)"})	
 				$( "#slideaccess .slideaccess-textarea" ).css({"padding": options.slideaccess_textarea_padding})	
@@ -284,6 +285,11 @@ $(document).ready(function(){
 				    	$(this)
 				    	.css('opacity', 0)
 				    	.css('display','block')
+						$( "#slideaccess .slideaccess-content" ).each(function() {
+							$(this)
+							.css('z-index', 0)
+						});	
+						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)						
 					 });
 				 }
 				 
@@ -295,6 +301,11 @@ $(document).ready(function(){
 				    	$(this)
 				    	.css('opacity', 0)
 				    	.css('display','block')
+						$( "#slideaccess .slideaccess-content" ).each(function() {
+							$(this)
+							.css('z-index', 0)
+						});			
+						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)						
 					 });
 				}
 				 slideCurrent--
@@ -314,13 +325,17 @@ $(document).ready(function(){
 				
 				 if(slideCurrent == 0) {
 				 
-				 	a.eq(0).css('z-index', -1).css('opacity', 100)
+				 	a.eq(slideCurrent).css('z-index', -1).css('opacity', 100)
 					a.eq(slidesTotal - 1)
 					.fadeOut(options.slideaccess_fade_speed, function() {
 				    	$(this)
 				    	.css('opacity', 0)
 				    	.css('display','block')
-				    	a.eq(0).css('z-index', 0)
+						$( "#slideaccess .slideaccess-content" ).each(function() {
+							$(this)
+							.css('z-index', 0)
+						});	
+						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)
 					 });
 					 
 				 }				 
@@ -331,12 +346,19 @@ $(document).ready(function(){
 				    	$(this)
 				    	.css('opacity', 0)
 				    	.css('display','block')
-				    	a.eq(slideCurrent).css('z-index', 0)
+						$( "#slideaccess .slideaccess-content" ).each(function() {
+							$(this)
+							.css('z-index', 0)
+						});					
+						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)
 				    });
+						
 
 				}
 							
 				$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess .slideaccess-img-container" ).eq(slideCurrent).width())
+				
+
 
 				slideCounter(slideCurrent+1)
 

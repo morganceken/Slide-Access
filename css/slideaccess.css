@@ -35,6 +35,14 @@
 	padding:0;
 }
 
+#slideaccess .slideaccess-textarea a{
+	text-decoration: none;
+}
+
+#slideaccess .slideaccess-textarea a:hover{
+	text-decoration: underline;
+}
+
 /* slideaccess images */
 
 #slideaccess .slideaccess-img-container{
@@ -56,7 +64,7 @@
 	top: 50%;
 	margin-top: -50px;
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	width: 100%;
 }
 
