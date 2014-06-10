@@ -56,7 +56,7 @@ $(document).ready(function(){
 				sAccCounterTot.text(slidesTotal)
 				sAccContent.eq(slideCurrent).css("z-index", 1);
 				sAcc.css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
-				sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})	
+				sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_textarea_bg)+","+options.slideaccess_textarea_opacity})	
 				sAccTextArea.css({"padding": options.slideaccess_textarea_padding})	
 				sAccTextArea.css({"height": sAccImg.height() - options.slideaccess_textarea_padding * 2})	
 				sAccTextAreaH.css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_header_size+"px"})
@@ -308,7 +308,7 @@ $(document).ready(function(){
 					sAccTextArea.css({"top":sAcc.height()})
 			    	sAcc.css("height", sAcc.height() + getHighestTextArea())
 			    	sAccContent.css("height", sAcc.height())
-			    	sAccTextArea.css({"background-color":options.slideaccess_background})	
+			    	sAccTextArea.css({"background-color":options.slideaccess_textarea_bg})	
 			    	sAcc.css("height", getHighestTextArea() + stdSlideAccHeight)
 			    	sAccContent.css("height", getHighestTextArea() + stdSlideAccHeight)
 			    	console.log(getHighestTextArea() + stdSlideAccHeight)	
@@ -317,7 +317,7 @@ $(document).ready(function(){
 			    	sAccCtrls.css("top", "")
 					sAccCtrls.css("margin-top", "")	
 					sAccTextArea.css({"top": ""})
-					sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})
+					sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_textarea_bg)+","+options.slideaccess_textarea_opacity})
 			    };
 			}	
 			var c = slideCurrent+1
@@ -374,8 +374,8 @@ $(document).ready(function(){
 		'slideaccess_img_width':		940, 		// Slideshow width (px).
 		'slideaccess_fade_speed': 		300,		// Slideshow fade speed (px).
 		'slideaccess_start_slide': 		1,			// Slideshow start node. 1 is default.
-		'slideaccess_background':		'#000000',	// Slideshow background color.
-		'slideaccess_textarea_opacity':	0.8,	// Slideshow background color.
+		'slideaccess_textarea_bg':		'#000000',	// Slideshow background color.
+		'slideaccess_textarea_opacity':	0.8,		// Slideshow opacity for text area.
 		'slideaccess_textarea_padding':	15,			// Slideshow padding for the textarea.
 		'slideaccess_font_family': 		'arial',	// Slideshow font type.
 		'slideaccess_font_color': 		'#fff',		// Slideshow font size (px).
