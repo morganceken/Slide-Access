@@ -383,7 +383,7 @@ $(document).ready(function(){
 		'slideaccess_font_color': 		'#fff',		// Slideshow font size (px).
 		'slideaccess_font_size': 		16,			// Slideshow <p> size (px).		
 		'slideaccess_header_size': 		28,			// Slideshow header size (px).
-		'slideaccess_a_color': 			'#fff',		// Slideshow <a> color.
+		'slideaccess_a_color': 			'#0080dd',		// Slideshow <a> color.
 	});
    
 });
