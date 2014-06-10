@@ -8,6 +8,8 @@ $(document).ready(function(){
 			var sAcc			=	$("#slideaccess")
 			var sAccContent		=	$(".slideaccess-content")			
 			var sAccCtrls		=	$('#slideaccess-ctrls')
+			var sAccNextBtn		=	$('#slideaccess-next-btn')	
+			var sAccPrevBtn		=	$('#slideaccess-previous-btn')			
 			var sAccPlayBtn		=	$('#slideaccess-play-btn')
 			var sAccPauseBtn	=	$('#slideaccess-pause-btn')			
 			var sAccCounterCur	=	$("#slideaccess-counter-current")
@@ -19,7 +21,7 @@ $(document).ready(function(){
 			var sAccTextAreaA	=	$(".slideaccess-textarea a")
 			
 			var options = $.extend({}, $.fn.slideaccess.defaults, options);
-			var slidesTotal =  sAccContent.length;				
+			var slidesTotal =  sAccContent.length;	
 			var slideCurrent = options.slideaccess_start_slide - 1;					
 			
 			/* Initiates the slideaccess */	
@@ -109,8 +111,8 @@ $(document).ready(function(){
 					
 					 if (newDimensions.width < options.slideaccess_width) {
 						
-						sAcc.css("height", $("#slideaccess img" ).height());
-						sAccContent.css("height", $("#slideaccess img" ).height());				
+						sAcc.css("height", sAccImg.height());
+						sAccContent.css("height", sAccImg.height());				
 						sAccTextArea.css({"height": sAccImg.height() - options.slideaccess_textarea_padding * 2})
 						}
 					}
@@ -160,8 +162,8 @@ $(document).ready(function(){
 							$(this).css("max-height", getLowestImg());			
 						});  			
 													
-						sAcc.css("height", $("#slideaccess img" ).height());		
-						sAccContent.css("height", $("#slideaccess img" ).height());
+						sAcc.css("height", sAccImg.height());		
+						sAccContent.css("height", sAccImg.height());
 						sAccCtrls.css('width', sAcc.width() - sAccTextArea.outerWidth());
 						sAccTextArea.css({"height": sAccImg.height() - options.slideaccess_textarea_padding * 2})
 					
@@ -178,8 +180,8 @@ $(document).ready(function(){
 			/* Start slideaccess function */				
 			var play = function() { 
 				durationInit = setInterval(function() {forward();}, options.slideaccess_duration);
-				$( "#slideaccess-play-btn").addClass('hidden');
-				$( "#slideaccess-pause-btn").removeClass('hidden');							
+				sAccPlayBtn.addClass('hidden');
+				sAccPauseBtn.removeClass('hidden');							
 			};
 			
 			/* Get lowest image height function */
@@ -207,7 +209,7 @@ $(document).ready(function(){
 			/* Get heighest text area height function */
 			function getHighestTextArea() {
 				var textAreaHeight = 0;
-				$('#slideaccess .slideaccess-textarea').each(function(){ 
+				sAccTextArea.each(function(){ 
 	                if ($(this).height() > textAreaHeight){  
 	                textAreaHeight = $(this).outerHeight();  
 					}
@@ -225,18 +227,15 @@ $(document).ready(function(){
 						.css('opacity', 100)					
 				}
 				else {
-					$( "#slideaccess-next-btn" )
-						.click(function() {
+					sAccNextBtn.click(function() {
 							next();
 						});	
 					
-					$( "#slideaccess-previous-btn" )
-						.click(function() {
+					sAccPrevBtn.click(function() {
 							previous();
 						});
 						
-					sAccContent
-						.each(function() {
+					sAccContent.each(function() {
 							$(this)
 							.css('opacity', 0)
 							.click(function() {
@@ -244,9 +243,7 @@ $(document).ready(function(){
 							});
 						})	
 						
-					sAccContent
-						.eq(slideCurrent)
-						.css('opacity', 100)						
+					sAccContent.eq(slideCurrent).css('opacity', 100)						
 						
 					play();	
 				};	
@@ -255,8 +252,8 @@ $(document).ready(function(){
 			/* Pause slide function for Pause-button. */	
 			var pause = function() {
 				clearInterval(durationInit)
-				$( "#slideaccess-pause-btn").addClass('hidden');				
-				$( "#slideaccess-play-btn").removeClass('hidden');
+				sAccPauseBtn.addClass('hidden');				
+				sAccPlayBtn.removeClass('hidden');
 			};
 			
 			/* Previous slide function for Previous-button. Pauses slideaccess */			
@@ -273,7 +270,7 @@ $(document).ready(function(){
 			
 			/* Slide counter function */
 			var slideCounter = function(slideCurrent) {
-				$( "#slideaccess-counter-current" ).text(slideCurrent)
+				sAccCounterCur.text(slideCurrent)
 			};	
 			
 		
@@ -307,7 +304,7 @@ $(document).ready(function(){
 					
 					var stdSlideAccHeight = sAcc.height();
 					
-					$('#slideaccess #slideaccess-ctrls').css("top", sAcc.height() / 2)
+					sAccCtrls.css("top", sAcc.height() / 2)
 					sAccTextArea.css({"top":sAcc.height()})
 			    	sAcc.css("height", sAcc.height() + getHighestTextArea())
 			    	sAccContent.css("height", sAcc.height())
@@ -317,13 +314,14 @@ $(document).ready(function(){
 			    	console.log(getHighestTextArea() + stdSlideAccHeight)	
 			    }
 			    else {
-			    	$('#slideaccess #slideaccess-ctrls').css("top", "")
-					$('#slideaccess #slideaccess-ctrls').css("margin-top", "")	
+			    	sAccCtrls.css("top", "")
+					sAccCtrls.css("margin-top", "")	
 					sAccTextArea.css({"top": ""})
 					sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})
 			    };
 			}	
-			
+			var c = slideCurrent+1
+			console.log(c)
 			/* Previous slide function */
 			var backward = function () {
 
@@ -334,11 +332,18 @@ $(document).ready(function(){
 					$(this).css('opacity', 0).css('display','block').css('z-index', 0)
 					sAccContent.eq(slideCurrent).css('z-index', 1)
 				});
+				
+				c--
+				if (c == 0) {
+
+					c = slidesTotal;
+				}
+				slideCounter(c)
 			};	
 				
 			/* Next slide function */
 			var forward = function () {
-				
+			
 				slideCurrent = (slideCurrent+1) % slidesTotal;
 				sAccContent.eq(slideCurrent).css('opacity', 100)				 
 				sAccContent.eq((slideCurrent-1) % slidesTotal)
@@ -346,6 +351,13 @@ $(document).ready(function(){
 					$(this).css('opacity', 0).css('display','block').css('z-index', 0)
 					sAccContent.eq(slideCurrent).css('z-index', 1)
 				});
+				
+				c++
+				if (c > slidesTotal) {
+
+					c = 1;
+				}			
+				slideCounter(c)
 			
 			};	
 			
