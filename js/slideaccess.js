@@ -306,6 +306,7 @@ $(document).ready(function(){
 			    	console.log(getHighestTextArea() + stdSlideAccHeight)	
 			    }
 			    else {
+			    	$('#slideaccess #slideaccess-ctrls').css("top", "")
 					$('#slideaccess #slideaccess-ctrls').css("margin-top", "")	
 					$( "#slideaccess .slideaccess-textarea" ).css({"top": ""})
 					$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})
