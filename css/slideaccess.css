@@ -63,6 +63,7 @@
 	height: 100px;
 	top: 50%;
 	margin-top: -50px;
+	min-height: 100px;
 	position: absolute;
 	z-index: 2;
 	width: 100%;
@@ -171,6 +172,7 @@
 	z-index: -1;
 }
 
+
 /* slideaccess for tablets and smartphones */
 
 @media only screen and (max-width: 768px) {
@@ -185,8 +187,7 @@
 	/* slideaccess controls */	
 	
 	#slideaccess #slideaccess-ctrls{
-		display: none;
-		visibility: hidden;
+		width: 100% !important;
 	}
 
 	/* slideaccess counter */	
@@ -202,13 +203,14 @@
 	
 	#slideaccess .slideaccess-textarea {
 		position: absolute;
-		bottom: 0;
+		bottom: auto;
 		right: 0;
 		top: auto;
 		height: auto !important;
+		opacity: 1 !important;
 		padding-left: 2.5% !important;
 		padding-right: 2.5% !important;
-		min-height: 0px;
+		min-height: 0px !important;
 		width: 95%;
 	}	
 
@@ -216,6 +218,15 @@
 
 /* slideaccess for smartphones */
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width : 568px){
+
 
 }
+
+
+@media only screen and (max-width : 480px){
+	
+
+}
+
+
