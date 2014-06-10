@@ -96,7 +96,7 @@ $.fn.slideaccess({
 'slideaccess_textarea_padding':	15,	// Slideshow padding for the textarea.
 'slideaccess_font_family': 'arial',	// Slideshow font type.
 'slideaccess_font_color': '#fff',	// Slideshow font size (px).
-'slideaccess_font_size': 16,	// Slideshow &lt;p&gt; size (px).		
+'slideaccess_font_size': 16,	// Slideshow <p> size (px).		
 'slideaccess_header_size': 28,	// Slideshow header size (px).
 'slideaccess_a_color': '#0080dd',	// Slideshow <a>; color.
 });
