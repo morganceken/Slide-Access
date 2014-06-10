@@ -92,8 +92,9 @@ $.fn.slideaccess({
 'slideaccess_img_width': 940,	// Slideshow width (px).
 'slideaccess_fade_speed': 300,	// Slideshow fade speed (px).
 'slideaccess_start_slide': 1,	// Slideshow start node. 1 is default.
-'slideaccess_background': '#000000',	// Slideshow background color.
-'slideaccess_textarea_padding':	15,	// Slideshow padding for the textarea.
+'slideaccess_textarea_bg': '#000000',	// Slideshow background color for text area.
+'slideaccess_textarea_opacity':	0.8,	// Slideshow opacity for text area.
+'slideaccess_textarea_padding':	15,	// Slideshow padding for the text area.
 'slideaccess_font_family': 'arial',	// Slideshow font type.
 'slideaccess_font_color': '#fff',	// Slideshow font size (px).
 'slideaccess_font_size': 16,	// Slideshow <p> size (px).		
