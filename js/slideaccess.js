@@ -4,10 +4,23 @@ $(document).ready(function(){
 	
 		$.fn.slideaccess = function(options) {
 		
-			var options = $.extend({}, $.fn.slideaccess.defaults, options);
-			var slidesTotal =  $('#slideaccess .slideaccess-content').length;				
-			var slideCurrent = options.slideaccess_start_slide - 1;		
+			/* Variables for CSS ID's and classes */	
+			var sAcc			=	$("#slideaccess")
+			var sAccContent		=	$(".slideaccess-content")			
+			var sAccCtrls		=	$('#slideaccess-ctrls')
+			var sAccPlayBtn		=	$('#slideaccess-play-btn')
+			var sAccPauseBtn	=	$('#slideaccess-pause-btn')			
+			var sAccCounterCur	=	$("#slideaccess-counter-current")
+			var sAccCounterTot	=	$("#slideaccess-counter-total")			
+			var sAccImg			=	$("#slideaccess img")			
+			var sAccTextArea	=	$(".slideaccess-textarea")
+			var sAccTextAreaH	=	$(".slideaccess-header")			
+			var sAccTextAreaP	=	$(".slideaccess-textarea p")
+			var sAccTextAreaA	=	$(".slideaccess-textarea a")
 			
+			var options = $.extend({}, $.fn.slideaccess.defaults, options);
+			var slidesTotal =  sAccContent.length;				
+			var slideCurrent = options.slideaccess_start_slide - 1;					
 			
 			/* Initiates the slideaccess */	
 			var slideaccessInit = function() { 					
@@ -16,145 +29,141 @@ $(document).ready(function(){
 				checkSlidesTotal()
 				bugFixes()
 				maxWidth768()
-				maxWidth320()
 			};
 			
 			/* Initiate Ctrl-buttons  */	
 			var ctrlsInit = function() {		
-				$('#slideaccess-play-btn').click(function(){play()});
-				$('#slideaccess-pause-btn').click(function(){pause()});	
+				sAccPlayBtn.click(function(){play()});
+				sAccPauseBtn.click(function(){pause()});	
 				
-				$('#slideaccess').mouseover(function() {
-					$('#slideaccess-pause-btn').stop(true).animate({opacity: 0.6}, 400);
-					$('#slideaccess-play-btn').stop(true).animate({opacity: 0.6}, 400);								
+				sAcc.mouseover(function() {
+					sAccPauseBtn.stop(true).animate({opacity: 0.6}, 400);
+					sAccPlayBtn.stop(true).animate({opacity: 0.6}, 400);								
 				});
 				  
-				$('#slideaccess').mouseout(function() {
-					$('#slideaccess-pause-btn').stop(true).animate({opacity: 0.0}, 300);
-					$('#slideaccess-play-btn').stop(true).animate({opacity: 0.0}, 300);									
+				sAcc.mouseout(function() {
+					sAccPauseBtn.stop(true).animate({opacity: 0.0}, 300);
+					sAccPlayBtn.stop(true).animate({opacity: 0.0}, 300);									
 				});	
 				
 			};			
 			
 			/* Next slide function for Next-button. Pauses slideaccess */			
 			var cssInit = function() { 
-				$( "#slideaccess-counter-current").text(options.slideaccess_start_slide)
-				$( "#slideaccess-counter-total").text(slidesTotal)
-				$('#slideaccess .slideaccess-content').eq(slideCurrent).css("z-index", 1);
-				$( "#slideaccess" ).css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
-				$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})	
-				$( "#slideaccess .slideaccess-textarea" ).css({"padding": options.slideaccess_textarea_padding})	
-				$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})	
-				$( "#slideaccess .slideaccess-textarea .slideaccess-header" ).css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_header_size+"px"})
-				$( "#slideaccess .slideaccess-textarea p" ).css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_font_size+"px"})
-				$( "#slideaccess .slideaccess-textarea a" ).css({"color":options.slideaccess_a_color, "font-size":options.slideaccess_font_size+"px"})									
-		        $('#slideaccess img').each(function(){  
+				sAccCounterCur.text(options.slideaccess_start_slide)
+				sAccCounterTot.text(slidesTotal)
+				sAccContent.eq(slideCurrent).css("z-index", 1);
+				sAcc.css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
+				sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})	
+				sAccTextArea.css({"padding": options.slideaccess_textarea_padding})	
+				sAccTextArea.css({"height": sAccImg.height() - options.slideaccess_textarea_padding * 2})	
+				sAccTextAreaH.css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_header_size+"px"})
+				sAccTextAreaP.css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_font_size+"px"})
+				sAccTextAreaA.css({"color":options.slideaccess_a_color, "font-size":options.slideaccess_font_size+"px"})									
+		        sAccImg.each(function(){  
 					$(this).css("max-height", options.slideaccess_height);
 					$(this).css("max-width", options.slideaccess_img_width);
 				}); 				
-				$('#slideaccess').css("height", getLowestImg());
-				$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
+				sAcc.css("height", getLowestImg());
+				sAccCtrls.css('width', sAcc.width() - sAccTextArea.outerWidth());
 			
 			};			
-
 			
 			var $window = $(window),
 			previousDimensions = {
 			    width: $window.width(),
 			    height: $window.height()
-			};
-			
+			};			
 			
 			/* Scaling function. Scales slideshow when resizing  */		
-
 			$window.resize(function(e) {
 				var newDimensions = {
 				    width: $window.width(),
 				    height: $window.height()
 				};
 			
-			
+				// Scale up
 				if (newDimensions.width > previousDimensions.width) {
-				    // scaling up
+				    
 					var maxHeight = options.slideaccess_height;    // Max height for the image
 					
 					var highestImage = 999999999999999999;
-					$('#slideaccess img').each(function(){ 
+					sAccImg.each(function(){ 
 						$(this).css("max-height", "");	
 				        if ($(this).height() < highestImage){  
 				        highestImage = $(this).height();  
 						}
 					});
 					
-					$('#slideaccess img').each(function(){ 
+					sAccImg.each(function(){ 
 						$(this).css("max-height", getLowestImg());			
 					});  		
 					
-					if($( "#slideaccess .slideaccess-content" ).height() == maxHeight){
-						$( "#slideaccess img" ).css("width", "100%");
-						$( "#slideaccess img" ).css("height", "");
-						$( "#slideaccess img" ).css("max-height", maxHeight);	
+					if(sAccContent.height() == maxHeight){
+						sAccImg.css("width", "100%");
+						sAccImg.css("height", "");
+						sAccImg.css("max-height", maxHeight);	
 					}
 					
 					else {
 					
 					 if (newDimensions.width < options.slideaccess_width) {
 						
-						$('#slideaccess').css("height", $("#slideaccess img" ).height());
-						$('.slideaccess-content').css("height", $("#slideaccess img" ).height());				
-						$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})
+						sAcc.css("height", $("#slideaccess img" ).height());
+						sAccContent.css("height", $("#slideaccess img" ).height());				
+						sAccTextArea.css({"height": sAccImg.height() - options.slideaccess_textarea_padding * 2})
 						}
 					}
-					$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
+					sAccCtrls.css('width', sAcc.width() - sAccTextArea.outerWidth());
 					
-					if($( "#slideaccess" ).width() == options.slideaccess_width){
-						$( "#slideaccess" ).css("height", options.slideaccess_height)
-						$( "#slideaccess .slideaccess-content" ).css("height", options.slideaccess_height)
+					if(sAcc.width() == options.slideaccess_width){
+						sAcc.css("height", options.slideaccess_height)
+						sAccContent.css("height", options.slideaccess_height)
 					};
 				
 				} 
-			
+				
+				// Scale down
 				else if (newDimensions.width < options.slideaccess_width) {
 				
-		            $('.slideaccess-content').each(function() {
-					var maxWidth = options.slideaccess_width; // Max width for the image
-					var maxHeight = options.slideaccess_height;    // Max height for the image
-					var ratio = 0;  // Used for aspect ratio
-					var width = $( "#slideaccess img" ).width();    // Current image width
-					var height = $( "#slideaccess img" ).height();  // Current image height
-			 
-			 
-					// Check if the current width is larger than the max
-					if(width > maxWidth){
-						ratio = maxWidth / width;   // get ratio for scaling image
-						$( "#slideaccess img" ).css("width", maxWidth); // Set new width
-						$( "#slideaccess img" ).css("height", height * ratio);  // Scale height based on ratio
-						height = height * ratio;    // Reset height to match scaled image
-						width = width * ratio;    // Reset width to match scaled image
-					}
-			 
-					// Check if current height is larger than max
-					if(height > maxHeight){
-						ratio = maxHeight / height; // get ratio for scaling image
-						$( "#slideaccess img" ).css("height", maxHeight);   // Set new height
-						$( "#slideaccess img" ).css("width", width * ratio);    // Scale width based on ratio
-						width = width * ratio;    // Reset width to match scaled image
-					}
-					
-					if($( "#slideaccess .slideaccess-content" ).height() == maxHeight){
-						$( "#slideaccess img" ).css("width", "100%");
-						$( "#slideaccess img" ).css("height", "");
-					}	
-										
-					$('#slideaccess img').each(function(){ 
-						$(this).css("max-height", getLowestImg());			
-					});  			
+		            sAccContent.each(function() {
+						var maxWidth = options.slideaccess_width; // Max width for the image
+						var maxHeight = options.slideaccess_height;    // Max height for the image
+						var ratio = 0;  // Used for aspect ratio
+						var width = sAccImg.width();    // Current image width
+						var height = sAccImg.height();  // Current image height
+				 
+				 
+						// Check if the current width is larger than the max
+						if(width > maxWidth){
+							ratio = maxWidth / width;   // get ratio for scaling image
+							sAccImg.css("width", maxWidth); // Set new width
+							sAccImg.css("height", height * ratio);  // Scale height based on ratio
+							height = height * ratio;    // Reset height to match scaled image
+							width = width * ratio;    // Reset width to match scaled image
+						}
+				 
+						// Check if current height is larger than max
+						if(height > maxHeight){
+							ratio = maxHeight / height; // get ratio for scaling image
+							sAccImg.css("height", maxHeight);   // Set new height
+							sAccImg.css("width", width * ratio);    // Scale width based on ratio
+							width = width * ratio;    // Reset width to match scaled image
+						}
 						
-					
-					$('#slideaccess').css("height", $("#slideaccess img" ).height());		
-					$('.slideaccess-content').css("height", $("#slideaccess img" ).height());
-					$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
-					$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})
+						if(sAccContent.height() == maxHeight){
+							sAccImg.css("width", "100%");
+							sAccImg.css("height", "");
+						}	
+											
+						sAccImg.each(function(){ 
+							$(this).css("max-height", getLowestImg());			
+						});  			
+													
+						sAcc.css("height", $("#slideaccess img" ).height());		
+						sAccContent.css("height", $("#slideaccess img" ).height());
+						sAccCtrls.css('width', sAcc.width() - sAccTextArea.outerWidth());
+						sAccTextArea.css({"height": sAccImg.height() - options.slideaccess_textarea_padding * 2})
 					
 					});	
 				
@@ -162,7 +171,7 @@ $(document).ready(function(){
 
 		        // Store the new dimensions
 	        	previousDimensions = newDimensions;
-	        	
+				
 	        	maxWidth768()
 	        });
 			
@@ -173,10 +182,10 @@ $(document).ready(function(){
 				$( "#slideaccess-pause-btn").removeClass('hidden');							
 			};
 			
-			
+			/* Get lowest image height function */
 			function getLowestImg() {
 				var ImgHeight = 999999999999999999;
-				$('#slideaccess img').each(function(){ 
+				sAccImg.each(function(){ 
 	                if ($(this).height() < ImgHeight){  
 	                ImgHeight = $(this).height();  
 					}
@@ -184,9 +193,10 @@ $(document).ready(function(){
 				return ImgHeight;
 			}
 			
+			/* Get height image height function */
 			function getHighestImg() {
 				var ImgHeight = 0;
-				$('#slideaccess img').each(function(){ 
+				sAccImg.each(function(){ 
 	                if ($(this).height() > ImgHeight){  
 	                ImgHeight = $(this).height();  
 					}
@@ -194,6 +204,7 @@ $(document).ready(function(){
 				return ImgHeight;
 			}
 			
+			/* Get heighest text area height function */
 			function getHighestTextArea() {
 				var textAreaHeight = 0;
 				$('#slideaccess .slideaccess-textarea').each(function(){ 
@@ -207,9 +218,9 @@ $(document).ready(function(){
 			/* Check total slides function. If there is only one then it hides controls, counter and stops fading  */				
 			var checkSlidesTotal = function() {
 				if (slidesTotal == 1) {
-					$( "#slideaccess-ctrls").addClass('hidden');	
-					$( "#slideaccess-counter").addClass('hidden');
-					$( "#slideaccess .slideaccess-content" )
+					sAccCtrls.addClass('hidden');	
+					sAccCounter.addClass('hidden');
+					sAccContent
 						.eq(slideCurrent)
 						.css('opacity', 100)					
 				}
@@ -224,7 +235,7 @@ $(document).ready(function(){
 							previous();
 						});
 						
-					$( "#slideaccess .slideaccess-content" )
+					sAccContent
 						.each(function() {
 							$(this)
 							.css('opacity', 0)
@@ -233,7 +244,7 @@ $(document).ready(function(){
 							});
 						})	
 						
-					$( "#slideaccess .slideaccess-content" )
+					sAccContent
 						.eq(slideCurrent)
 						.css('opacity', 100)						
 						
@@ -280,140 +291,65 @@ $(document).ready(function(){
 			function bugFixes() {
 			
 				// Fixing height bug when spam refreshing browser
-				if($( "#slideaccess" ).height() == 0){
-					$( "#slideaccess" ).css("height", "340px")
+				if(sAcc.height() == 0){
+					sAcc.css("height", "340px")
 					
-					var newHeight = options.slideaccess_height / options.slideaccess_width * $( "#slideaccess" ).width()
-					$( "#slideaccess" ).css("height", newHeight)
-					
+					var newHeight = options.slideaccess_height / options.slideaccess_width * sAcc.width()
+					sAcc.css("height", newHeight)
 				};	
 									
 			};	
 			
+			/* CSS for tablets and smartphones */
 			function maxWidth768() { 
 			
 				if ($( window ).width() < 769) {
 					
-					var stdSlideAccHeight = $('#slideaccess').height();
+					var stdSlideAccHeight = sAcc.height();
 					
-					$('#slideaccess #slideaccess-ctrls').css("top", $('#slideaccess').height() / 2)
-					$( "#slideaccess .slideaccess-textarea" ).css({"top":$( "#slideaccess" ).height()})
-			    	$('#slideaccess').css("height", $('#slideaccess').height() + getHighestTextArea())
-			    	$('#slideaccess .slideaccess-content').css("height", $('#slideaccess').height())
-			    	$( "#slideaccess .slideaccess-textarea" ).css({"background-color":options.slideaccess_background})	
-			    	$('#slideaccess').css("height", getHighestTextArea() + stdSlideAccHeight)
-			    	$('#slideaccess .slideaccess-content').css("height", getHighestTextArea() + stdSlideAccHeight)
+					$('#slideaccess #slideaccess-ctrls').css("top", sAcc.height() / 2)
+					sAccTextArea.css({"top":sAcc.height()})
+			    	sAcc.css("height", sAcc.height() + getHighestTextArea())
+			    	sAccContent.css("height", sAcc.height())
+			    	sAccTextArea.css({"background-color":options.slideaccess_background})	
+			    	sAcc.css("height", getHighestTextArea() + stdSlideAccHeight)
+			    	sAccContent.css("height", getHighestTextArea() + stdSlideAccHeight)
 			    	console.log(getHighestTextArea() + stdSlideAccHeight)	
 			    }
 			    else {
 			    	$('#slideaccess #slideaccess-ctrls').css("top", "")
 					$('#slideaccess #slideaccess-ctrls').css("margin-top", "")	
-					$( "#slideaccess .slideaccess-textarea" ).css({"top": ""})
-					$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})
+					sAccTextArea.css({"top": ""})
+					sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})
 			    };
-			}	
-			
-			function maxWidth320() { 
-			
 			}	
 			
 			/* Previous slide function */
 			var backward = function () {
-				$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess .slideaccess-img-container" ).eq(slideCurrent).width())
-				var a = $( "#slideaccess .slideaccess-content" )
-				
-				 if(slideCurrent == 0){
-				 	slideCurrent = slidesTotal;	 
-				 }
-				 				
-				 if(slideCurrent == slidesTotal){
-				 
-				 	a.eq(slidesTotal - 1).css('z-index', -1).css('opacity', 100)
-					a.eq(0)
-					.fadeOut(options.slideaccess_fade_speed, function() {
-				    	$(this)
-				    	.css('opacity', 0)
-				    	.css('display','block')
-						$( "#slideaccess .slideaccess-content" ).each(function() {
-							$(this)
-							.css('z-index', 0)
-						});	
-						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)						
-					 });
-				 }
-				 
-				 else {			
-				 	a.eq(slidesTotal - 1).css('z-index', 0)
-					a.eq(slideCurrent - 1).css('opacity', 100)
-					a.eq(slideCurrent)
-					.fadeOut(options.slideaccess_fade_speed, function() {
-				    	$(this)
-				    	.css('opacity', 0)
-				    	.css('display','block')
-						$( "#slideaccess .slideaccess-content" ).each(function() {
-							$(this)
-							.css('z-index', 0)
-						});			
-						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)						
-					 });
-				}
-				 slideCurrent--
-				 slideCounter(slideCurrent+1)
+
+				slideCurrent = (slideCurrent-1) % slidesTotal;
+				sAccContent.eq(slideCurrent).css('opacity', 100)				 
+				sAccContent.eq((slideCurrent+1) % slidesTotal)
+				.fadeOut(options.slideaccess_fade_speed, function() {
+					$(this).css('opacity', 0).css('display','block').css('z-index', 0)
+					sAccContent.eq(slideCurrent).css('z-index', 1)
+				});
 			};	
 				
 			/* Next slide function */
 			var forward = function () {
-
-				 slideCurrent++
-				 
-				 if(slideCurrent == slidesTotal){
-				 	slideCurrent = 0;	 
-				 }
+				
+				slideCurrent = (slideCurrent+1) % slidesTotal;
+				sAccContent.eq(slideCurrent).css('opacity', 100)				 
+				sAccContent.eq((slideCurrent-1) % slidesTotal)
+				.fadeOut(options.slideaccess_fade_speed, function() {
+					$(this).css('opacity', 0).css('display','block').css('z-index', 0)
+					sAccContent.eq(slideCurrent).css('z-index', 1)
+				});
 			
-				var a = $( "#slideaccess .slideaccess-content" )	
-				
-				 if(slideCurrent == 0) {
-				 
-				 	a.eq(slideCurrent).css('z-index', -1).css('opacity', 100)
-					a.eq(slidesTotal - 1)
-					.fadeOut(options.slideaccess_fade_speed, function() {
-				    	$(this)
-				    	.css('opacity', 0)
-				    	.css('display','block')
-						$( "#slideaccess .slideaccess-content" ).each(function() {
-							$(this)
-							.css('z-index', 0)
-						});	
-						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)
-					 });
-					 
-				 }				 
-				else {		
-					a.eq(slideCurrent).css('opacity', 100).css('z-index', -1)
-					a.eq(slideCurrent - 1)
-					.fadeOut(options.slideaccess_fade_speed, function() {
-				    	$(this)
-				    	.css('opacity', 0)
-				    	.css('display','block')
-						$( "#slideaccess .slideaccess-content" ).each(function() {
-							$(this)
-							.css('z-index', 0)
-						});					
-						a.eq(slideCurrent).css('z-index', 1).css('opacity', 100)
-				    });
-						
-
-				}
-							
-				$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess .slideaccess-img-container" ).eq(slideCurrent).width())
-				
-
-
-				slideCounter(slideCurrent+1)
-
 			};	
 			
-			/* Initiate the slideaccess */
+			// Initiate the slideaccess
 			slideaccessInit()
 		};	
 	}) (jQuery);
