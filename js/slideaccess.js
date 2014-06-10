@@ -15,6 +15,8 @@ $(document).ready(function(){
 				ctrlsInit()
 				checkSlidesTotal()
 				bugFixes()
+				maxWidth768()
+				maxWidth320()
 			};
 			
 			/* Initiate Ctrl-buttons  */	
@@ -40,7 +42,7 @@ $(document).ready(function(){
 				$( "#slideaccess-counter-total").text(slidesTotal)
 				$('#slideaccess .slideaccess-content').eq(slideCurrent).css("z-index", 1);
 				$( "#slideaccess" ).css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
-				$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+",0.8)"})	
+				$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})	
 				$( "#slideaccess .slideaccess-textarea" ).css({"padding": options.slideaccess_textarea_padding})	
 				$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})	
 				$( "#slideaccess .slideaccess-textarea .slideaccess-header" ).css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_header_size+"px"})
@@ -61,6 +63,7 @@ $(document).ready(function(){
 			    width: $window.width(),
 			    height: $window.height()
 			};
+			
 			
 			/* Scaling function. Scales slideshow when resizing  */		
 
@@ -105,7 +108,6 @@ $(document).ready(function(){
 					$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
 					
 					if($( "#slideaccess" ).width() == options.slideaccess_width){
-						console.log("apapapa")
 						$( "#slideaccess" ).css("height", options.slideaccess_height)
 						$( "#slideaccess .slideaccess-content" ).css("height", options.slideaccess_height)
 					};
@@ -153,13 +155,15 @@ $(document).ready(function(){
 					$('.slideaccess-content').css("height", $("#slideaccess img" ).height());
 					$( "#slideaccess #slideaccess-ctrls" ).css('width', $( "#slideaccess" ).width() - $( "#slideaccess .slideaccess-textarea" ).outerWidth());
 					$( "#slideaccess .slideaccess-textarea" ).css({"height": $( "#slideaccess img" ).height() - options.slideaccess_textarea_padding * 2})
-				
+					
 					});	
 				
 		        }
-		
+
 		        // Store the new dimensions
 	        	previousDimensions = newDimensions;
+	        	
+	        	maxWidth768()
 	        });
 			
 			/* Start slideaccess function */				
@@ -178,6 +182,26 @@ $(document).ready(function(){
 					}
 				});	
 				return ImgHeight;
+			}
+			
+			function getHighestImg() {
+				var ImgHeight = 0;
+				$('#slideaccess img').each(function(){ 
+	                if ($(this).height() > ImgHeight){  
+	                ImgHeight = $(this).height();  
+					}
+				});	
+				return ImgHeight;
+			}
+			
+			function getHighestTextArea() {
+				var textAreaHeight = 0;
+				$('#slideaccess .slideaccess-textarea').each(function(){ 
+	                if ($(this).height() > textAreaHeight){  
+	                textAreaHeight = $(this).outerHeight();  
+					}
+				});	
+				return textAreaHeight;
 			}
 			
 			/* Check total slides function. If there is only one then it hides controls, counter and stops fading  */				
@@ -261,12 +285,36 @@ $(document).ready(function(){
 					
 					var newHeight = options.slideaccess_height / options.slideaccess_width * $( "#slideaccess" ).width()
 					$( "#slideaccess" ).css("height", newHeight)
-					console.log($( "#slideaccess" ).width())
 					
 				};	
-				
-								
-			};		
+									
+			};	
+			
+			function maxWidth768() { 
+			
+				if ($( window ).width() < 769) {
+					
+					var stdSlideAccHeight = $('#slideaccess').height();
+					
+					$('#slideaccess #slideaccess-ctrls').css("top", $('#slideaccess').height() / 2)
+					$( "#slideaccess .slideaccess-textarea" ).css({"top":$( "#slideaccess" ).height()})
+			    	$('#slideaccess').css("height", $('#slideaccess').height() + getHighestTextArea())
+			    	$('#slideaccess .slideaccess-content').css("height", $('#slideaccess').height())
+			    	$( "#slideaccess .slideaccess-textarea" ).css({"background-color":options.slideaccess_background})	
+			    	$('#slideaccess').css("height", getHighestTextArea() + stdSlideAccHeight)
+			    	$('#slideaccess .slideaccess-content').css("height", getHighestTextArea() + stdSlideAccHeight)
+			    	console.log(getHighestTextArea() + stdSlideAccHeight)	
+			    }
+			    else {
+					$('#slideaccess #slideaccess-ctrls').css("margin-top", "")	
+					$( "#slideaccess .slideaccess-textarea" ).css({"top": ""})
+					$( "#slideaccess .slideaccess-textarea" ).css({"background-color":"rgba("+rgb2hex(options.slideaccess_background)+","+options.slideaccess_textarea_opacity})
+			    };
+			}	
+			
+			function maxWidth320() { 
+			
+			}	
 			
 			/* Previous slide function */
 			var backward = function () {
@@ -378,12 +426,13 @@ $(document).ready(function(){
 		'slideaccess_fade_speed': 		300,		// Slideshow fade speed (px).
 		'slideaccess_start_slide': 		1,			// Slideshow start node. 1 is default.
 		'slideaccess_background':		'#000000',	// Slideshow background color.
+		'slideaccess_textarea_opacity':	0.8,	// Slideshow background color.
 		'slideaccess_textarea_padding':	15,			// Slideshow padding for the textarea.
 		'slideaccess_font_family': 		'arial',	// Slideshow font type.
 		'slideaccess_font_color': 		'#fff',		// Slideshow font size (px).
 		'slideaccess_font_size': 		16,			// Slideshow <p> size (px).		
 		'slideaccess_header_size': 		28,			// Slideshow header size (px).
-		'slideaccess_a_color': 			'#fff',		// Slideshow <a> color.
+		'slideaccess_a_color': 			'#0080dd',		// Slideshow <a> color.
 	});
    
 });
