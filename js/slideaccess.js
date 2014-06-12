@@ -23,8 +23,14 @@ $(document).ready(function(){
 			
 			var options = $.extend({}, $.fn.slideaccess.defaults, options);
 			var slidesTotal =  sAccContent.length;	
-			var slideCurrent = randomSlide() - 1;	
-			console.log(randomSlide())			
+			
+			var startSlide = options.slideaccess_start_slide;
+			
+			if (startSlide == 'random') {
+				startSlide = randomSlide()
+			};
+			
+			var slideCurrent = startSlide;			
 			
 			/* Initiates the slideaccess */	
 			var slideaccessInit = function() { 					
@@ -55,9 +61,9 @@ $(document).ready(function(){
 			
 			/* Next slide function for Next-button. Pauses slideaccess */			
 			var cssInit = function() { 
-				sAccCounterCur.text(options.slideaccess_start_slide)
 				sAccCounterTot.text(slidesTotal)
 				sAccContent.eq(slideCurrent).css("z-index", 1);
+				sAccCounterCur.text(startSlide+1)
 				sAcc.css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
 				sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_textarea_bg)+","+options.slideaccess_textarea_opacity})	
 				sAccTextArea.css({"padding": options.slideaccess_textarea_padding})	
@@ -313,8 +319,6 @@ $(document).ready(function(){
 				sAccCtrls.css("display", "block")
 				sAccCounter.css("display", "block")
 
-				
-									
 			};			
 			
 			/* CSS for tablets and smartphones */
@@ -331,7 +335,6 @@ $(document).ready(function(){
 			    	sAccTextArea.css({"background-color":options.slideaccess_textarea_bg})	
 			    	sAcc.css("height", getHighestTextArea() + stdSlideAccHeight)
 			    	sAccContent.css("height", getHighestTextArea() + stdSlideAccHeight)
-			    	console.log(getHighestTextArea() + stdSlideAccHeight)	
 			    }
 			    else {
 			    	sAccCtrls.css("top", "")
@@ -393,15 +396,15 @@ $(document).ready(function(){
 		'slideaccess_height':			340,		// Slideshow height (px).
 		'slideaccess_img_width':		940, 		// Slideshow width (px).
 		'slideaccess_fade_speed': 		300,		// Slideshow fade speed (px).
-		'slideaccess_start_slide': 		1,			// Slideshow start node. 1 is default.
+		'slideaccess_start_slide': 		'random',			// Slideshow start node. 1 is default. 'random' generates random slide.
 		'slideaccess_textarea_bg':		'#000000',	// Slideshow background color.
-		'slideaccess_textarea_opacity':	0.8,		// Slideshow opacity for text area.
+		'slideaccess_textarea_opacity':	0.85,		// Slideshow opacity for text area.
 		'slideaccess_textarea_padding':	15,			// Slideshow padding for the textarea.
 		'slideaccess_font_family': 		'arial',	// Slideshow font type.
 		'slideaccess_font_color': 		'#fff',		// Slideshow font size (px).
 		'slideaccess_font_size': 		16,			// Slideshow <p> size (px).		
 		'slideaccess_header_size': 		28,			// Slideshow header size (px).
-		'slideaccess_a_color': 			'#0080dd',		// Slideshow <a> color.
+		'slideaccess_a_color': 			'#0080dd',	// Slideshow <a> color.
 	});
    
 });
