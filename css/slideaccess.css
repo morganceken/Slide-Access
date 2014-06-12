@@ -195,8 +195,8 @@
 	/* slideaccess counter */	
 	
 	#slideaccess #slideaccess-counter {
-		bottom: initial;
-		left: initial;
+		bottom: auto;
+		left: auto;
 		right: 10px;
 		top: 10px;		
 	}

@@ -11,7 +11,8 @@ $(document).ready(function(){
 			var sAccNextBtn		=	$('#slideaccess-next-btn')	
 			var sAccPrevBtn		=	$('#slideaccess-previous-btn')			
 			var sAccPlayBtn		=	$('#slideaccess-play-btn')
-			var sAccPauseBtn	=	$('#slideaccess-pause-btn')			
+			var sAccPauseBtn	=	$('#slideaccess-pause-btn')	
+			var sAccCounter		=	$("#slideaccess-counter")
 			var sAccCounterCur	=	$("#slideaccess-counter-current")
 			var sAccCounterTot	=	$("#slideaccess-counter-total")			
 			var sAccImg			=	$("#slideaccess img")			
@@ -22,7 +23,8 @@ $(document).ready(function(){
 			
 			var options = $.extend({}, $.fn.slideaccess.defaults, options);
 			var slidesTotal =  sAccContent.length;	
-			var slideCurrent = options.slideaccess_start_slide - 1;					
+			var slideCurrent = randomSlide() - 1;	
+			console.log(randomSlide())			
 			
 			/* Initiates the slideaccess */	
 			var slideaccessInit = function() { 					
@@ -31,6 +33,7 @@ $(document).ready(function(){
 				checkSlidesTotal()
 				bugFixes()
 				maxWidth768()
+				noJs()
 			};
 			
 			/* Initiate Ctrl-buttons  */	
@@ -273,6 +276,11 @@ $(document).ready(function(){
 				sAccCounterCur.text(slideCurrent)
 			};	
 			
+			/* Slide counter function */
+			function randomSlide() {
+				rSlide = Math.floor(Math.random() * slidesTotal)				
+				return rSlide
+			};	
 		
 			//Function to convert hex format to a rgb color
 			function rgb2hex(rgb){
@@ -296,6 +304,18 @@ $(document).ready(function(){
 				};	
 									
 			};	
+			
+			function noJs() {
+				
+				sAccContent.css("position", "absolute").css("height", "100%").css("display", "block")
+				sAccImg.css("position", "absolute")
+				sAccImg.css("position", "absolute")
+				sAccCtrls.css("display", "block")
+				sAccCounter.css("display", "block")
+
+				
+									
+			};			
 			
 			/* CSS for tablets and smartphones */
 			function maxWidth768() { 
@@ -321,7 +341,7 @@ $(document).ready(function(){
 			    };
 			}	
 			var c = slideCurrent+1
-			console.log(c)
+			
 			/* Previous slide function */
 			var backward = function () {
 
