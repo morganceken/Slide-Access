@@ -5,8 +5,8 @@ $(document).ready(function(){
 		$.fn.slideaccess = function(options) {
 		
 			/* Variables for CSS ID's and classes */	
-			var sAcc			=	$("#slideaccess")
-			var sAccContent		=	$(".slideaccess-content")			
+			var sAcc			=	$("#slideaccess ul")
+			var sAccContent		=	$("#slideaccess ul li")			
 			var sAccCtrls		=	$('#slideaccess-ctrls')
 			var sAccNextBtn		=	$('#slideaccess-next-btn')	
 			var sAccPrevBtn		=	$('#slideaccess-previous-btn')			
@@ -16,10 +16,10 @@ $(document).ready(function(){
 			var sAccCounterCur	=	$("#slideaccess-counter-current")
 			var sAccCounterTot	=	$("#slideaccess-counter-total")			
 			var sAccImg			=	$("#slideaccess img")			
-			var sAccTextArea	=	$(".slideaccess-textarea")
-			var sAccTextAreaH	=	$(".slideaccess-header")			
-			var sAccTextAreaP	=	$(".slideaccess-textarea p")
-			var sAccTextAreaA	=	$(".slideaccess-textarea a")
+			var sAccTextArea	=	$("#slideaccess ul li div")
+			var sAccTextAreaH	=	$("#slideaccess ul li div h1")			
+			var sAccTextAreaP	=	$("#slideaccess ul li div p")
+			var sAccTextAreaA	=	$("#slideaccess ul li div a")
 			
 			var options = $.extend({}, $.fn.slideaccess.defaults, options);
 			var slidesTotal =  sAccContent.length;	
@@ -51,6 +51,16 @@ $(document).ready(function(){
 					sAccPauseBtn.stop(true).animate({opacity: 0.6}, 400);
 					sAccPlayBtn.stop(true).animate({opacity: 0.6}, 400);								
 				});
+				
+				sAccCtrls.mouseover(function() {
+					sAccPauseBtn.stop(true).animate({opacity: 0.6}, 400);
+					sAccPlayBtn.stop(true).animate({opacity: 0.6}, 400);								
+				});				
+				
+				sAccCtrls.mouseout(function() {
+					sAccPauseBtn.stop(true).animate({opacity: 0.6}, 300);
+					sAccPlayBtn.stop(true).animate({opacity: 0.6}, 300);									
+				});	
 				  
 				sAcc.mouseout(function() {
 					sAccPauseBtn.stop(true).animate({opacity: 0.0}, 300);
@@ -67,6 +77,7 @@ $(document).ready(function(){
 				sAcc.css({"max-width":options.slideaccess_width+"px",  "font-family":options.slideaccess_font_family})
 				sAccTextArea.css({"background-color":"rgba("+rgb2hex(options.slideaccess_textarea_bg)+","+options.slideaccess_textarea_opacity})	
 				sAccTextArea.css({"padding": options.slideaccess_textarea_padding})	
+				sAccTextArea.css({"width": options.slideaccess_textarea_width})					
 				sAccTextArea.css({"height": sAccImg.height() - options.slideaccess_textarea_padding * 2})	
 				sAccTextAreaH.css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_header_size+"px"})
 				sAccTextAreaP.css({"color":options.slideaccess_font_color, "font-size":options.slideaccess_font_size+"px"})
@@ -308,6 +319,12 @@ $(document).ready(function(){
 					var newHeight = options.slideaccess_height / options.slideaccess_width * sAcc.width()
 					sAcc.css("height", newHeight)
 				};	
+				
+				if(sAcc.width() == options.slideaccess_width){
+					sAcc.css("height", "340px")
+				};	
+
+				console.log(sAccImg.height())				
 									
 			};	
 			
@@ -396,10 +413,11 @@ $(document).ready(function(){
 		'slideaccess_height':			340,		// Slideshow height (px).
 		'slideaccess_img_width':		940, 		// Slideshow width (px).
 		'slideaccess_fade_speed': 		300,		// Slideshow fade speed (px).
-		'slideaccess_start_slide': 		'random',			// Slideshow start node. 1 is default. 'random' generates random slide.
+		'slideaccess_start_slide': 		1,			// Slideshow start node. 1 is default. 'random' generates random slide.
+		'slideaccess_textarea_width':	300,		// Slideshow text area width.		
 		'slideaccess_textarea_bg':		'#000000',	// Slideshow background color.
 		'slideaccess_textarea_opacity':	0.85,		// Slideshow opacity for text area.
-		'slideaccess_textarea_padding':	15,			// Slideshow padding for the textarea.
+		'slideaccess_textarea_padding':	15,			// Slideshow padding for the text area.
 		'slideaccess_font_family': 		'arial',	// Slideshow font type.
 		'slideaccess_font_color': 		'#fff',		// Slideshow font size (px).
 		'slideaccess_font_size': 		16,			// Slideshow <p> size (px).		

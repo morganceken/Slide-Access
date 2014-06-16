@@ -11,59 +11,57 @@
 
 </head>
 <body>
-
 	<!-- JS-Fader -->
 	<div id="slideaccess">
-	
 		<!-- Slider Controls -->
-		<div id="slideaccess-ctrls" aria-hidden="true">
-			<a id="slideaccess-play-btn" title="Starta bildspelet" href="#null" aria-hidden="true"></a> 
-			<a id="slideaccess-pause-btn" title="Pausa bildspelet" href="#null" aria-hidden="true"></a> 
-			<a id="slideaccess-next-btn" title="Nästa nyhet" href="#null" aria-hidden="true"></a> 
-			<a id="slideaccess-previous-btn" title="Föregående nyhet" href="#null" aria-hidden="true"></a> 
-		</div>	
+		<nav id="slideaccess-ctrls" aria-hidden="true">
+			<button id="slideaccess-play-btn" title="Starta bildspelet" aria-hidden="true"></button> 
+			<button id="slideaccess-pause-btn" title="Pausa bildspelet" aria-hidden="true"></button> 
+			<button id="slideaccess-next-btn" title="Nästa nyhet" aria-hidden="true"></button> 
+			<button id="slideaccess-previous-btn" title="Föregående nyhet" aria-hidden="true"></button>  
+		</nav>	
 		<!-- END Slider Controls -->
-		
-		<!-- Slide 1 -->
-		<figure class="slideaccess-content">
-			<img src="../img/img1.jpg" alt="">
-			<figcaption class="slideaccess-textarea">
-				<h1 class="slideaccess-header">Lorem ipsum dolor 1</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-				<a href="">Lorem ipsum dolor 1</a>
-			</figcaption>	
-		</figure>
-		<!-- END Slide 1 -->
-		
-		<!-- Slide 2 -->
-		<figure class="slideaccess-content">
-			<img src="../img/img2.jpg" alt="">
-			<figcaption class="slideaccess-textarea">
-				<h1 class="slideaccess-header">Lorem ipsum dolor 2</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-				<a href="">Lorem ipsum dolor 2</a>
-			</figcaption>	
-		</figure>
-		<!-- END Slide 2 -->
-		
-		<!-- Slide 3 -->
-		<figure class="slideaccess-content">
-			<img src="../img/img3.jpg" alt="">
-			<figcaption class="slideaccess-textarea">
-				<h1 class="slideaccess-header">Lorem ipsum dolor 3</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-				<a href="">Lorem ipsum dolor 3</a>
-			</figcaption>	
-		</figure>
-		<!-- END Slide 3 -->
+		<ul>
+			<!-- Slide 1 -->
+			<li>
+				<img src="../img/img1.jpg" alt="">
+				<div>
+					<h1>Lorem ipsum dolor 1</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+					<a href="">Lorem ipsum dolor 1</a>
+				</div>
+			</li>
+			<!-- END Slide 1 -->
+			
+			<!-- Slide 2 -->
+			<li>
+				<img src="../img/img2.jpg" alt="">
+				<div>
+					<h1>Lorem ipsum dolor 2</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+					<a href="">Lorem ipsum dolor 2</a>
+				</div>
+			</li>
+			<!-- END Slide 2 -->
+
+			<!-- Slide 3 -->
+			<li>
+				<img src="../img/img3.jpg" alt="">
+				<div>
+					<h1>Lorem ipsum dolor 3</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+					<a href="">Lorem ipsum dolor 3</a>
+				</div>
+			</li>
+			<!-- END Slide 3 -->
+		</ul>	
 		
 		<!-- Slider counter -->
 		<div id="slideaccess-counter" aria-hidden="true"><span id="slideaccess-counter-current"></span> / <span id="slideaccess-counter-total"></span></div>
 		<!-- END Slider counter -->	
-	
-	</div>	
+		
+	</div>
 	<!-- END JS-Fader -->
-
 </body>
 </html>
