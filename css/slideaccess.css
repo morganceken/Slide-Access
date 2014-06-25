@@ -99,25 +99,25 @@
 }
 
 #slideaccess-play-btn {
-	background: #000 url('/static/img/slideaccess-ctrls/play.png');
+	background: #000 url('../img/slideaccess-ctrls/play.png');
 	background-repeat: no-repeat !important;
 	opacity: 0;
 }
 
 #slideaccess-pause-btn {
-	background: #000 url('/static/img/slideaccess-ctrls/pause.png');
+	background: #000 url('../img/slideaccess-ctrls/pause.png');
 	background-repeat: no-repeat !important;
 	opacity: 0;
 }
 
 #slideaccess-play-btn:hover {
-	background: #000 url('/static/img/slideaccess-ctrls/play.png');
+	background: #000 url('../img/slideaccess-ctrls/play.png');
 	background-repeat: no-repeat !important;
 	opacity: 1 !important;
 }
 
 #slideaccess-pause-btn:hover  {
-	background: #000 url('/static/img/slideaccess-ctrls/pause.png');
+	background: #000 url('../img/slideaccess-ctrls/pause.png');
 	background-repeat: no-repeat !important;
 	opacity: 1 !important;
 }
@@ -145,14 +145,14 @@
 }
 
 #slideaccess-next-btn, #slideaccess-next-btn:hover {
-	background: #222 url('/static/img/slideaccess-ctrls/next.png') !important;
+	background: #222 url('../img/slideaccess-ctrls/next.png') !important;
 	background-position: 50% 50% !important;	
 	background-repeat: no-repeat !important;
 	right: 20px !important;
 }
 
 #slideaccess-previous-btn {
-	background: #222 url('/static/img/slideaccess-ctrls/previous.png') !important;
+	background: #222 url('../img/slideaccess-ctrls/previous.png') !important;
 	background-position: 50% 50% !important;	
 	background-repeat: no-repeat !important;
 	left: 20px;
