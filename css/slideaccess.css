@@ -27,6 +27,7 @@
 /* slideaccess text area */
 
 #slideaccess ul li div {
+    background-color: #000000;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -98,25 +99,25 @@
 }
 
 #slideaccess-play-btn {
-	background: #000 url('../img/ctrls/play.png');
+	background: #000 url('/static/img/slideaccess-ctrls/play.png');
 	background-repeat: no-repeat !important;
 	opacity: 0;
 }
 
 #slideaccess-pause-btn {
-	background: #000 url('../img/ctrls/pause.png');
+	background: #000 url('/static/img/slideaccess-ctrls/pause.png');
 	background-repeat: no-repeat !important;
 	opacity: 0;
 }
 
 #slideaccess-play-btn:hover {
-	background: #000 url('../img/ctrls/play.png');
+	background: #000 url('/static/img/slideaccess-ctrls/play.png');
 	background-repeat: no-repeat !important;
 	opacity: 1 !important;
 }
 
 #slideaccess-pause-btn:hover  {
-	background: #000 url('../img/ctrls/pause.png');
+	background: #000 url('/static/img/slideaccess-ctrls/pause.png');
 	background-repeat: no-repeat !important;
 	opacity: 1 !important;
 }
@@ -144,14 +145,14 @@
 }
 
 #slideaccess-next-btn, #slideaccess-next-btn:hover {
-	background: #222 url('../img/ctrls/next.png') !important;
+	background: #222 url('/static/img/slideaccess-ctrls/next.png') !important;
 	background-position: 50% 50% !important;	
 	background-repeat: no-repeat !important;
 	right: 20px !important;
 }
 
 #slideaccess-previous-btn {
-	background: #222 url('../img/ctrls/previous.png') !important;
+	background: #222 url('/static/img/slideaccess-ctrls/previous.png') !important;
 	background-position: 50% 50% !important;	
 	background-repeat: no-repeat !important;
 	left: 20px;
@@ -185,7 +186,7 @@
 
 /* slideaccess for tablets and smartphones */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 786px) {
 
 	/* slideaccess controls */	
 	
@@ -217,18 +218,26 @@
 		width: 95% !important;
 	}	
 
+	#slideaccess ul li img {
+		position: relative !important;
+	}	
+
 }
 
 /* slideaccess for smartphones */
 
 @media only screen and (max-width : 568px){
 
+    #slideaccess-play-btn, #slideaccess-pause-btn {
+        display: none !important;
+        visibility: hidden !important;
+    }	
 
 }
 
 
 @media only screen and (max-width : 480px){
-	
+
 
 }
 
