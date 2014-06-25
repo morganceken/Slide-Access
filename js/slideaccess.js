@@ -5,7 +5,6 @@ $(document).ready(function () {
         $.fn.slideaccess = function (options) {
 
             /* Variables for CSS ID's and classes */
-            var sAccRoot = $("#slideaccess")
             var sAcc = $("#slideaccess, #slideaccess ul")
             var sAccContent = $("#slideaccess ul li")
             var sAccCtrls = $('#slideaccess-ctrls')
@@ -25,11 +24,14 @@ $(document).ready(function () {
             var options = $.extend({}, $.fn.slideaccess.defaults, options);
             var slidesTotal = sAccContent.length;
 
-            var startSlide = options.slideaccess_start_slide -1;
+            var startSlide = options.slideaccess_start_slide;
 
             if (startSlide == 'random') {
                 startSlide = randomSlide()
-            };
+            }
+			else {
+				startSlide --
+			};
 
             var slideCurrent = startSlide;
 
@@ -38,8 +40,8 @@ $(document).ready(function () {
                 cssInit()
                 ctrlsInit()
                 checkSlidesTotal()
-                bugFixes()
                 maxWidth768()
+                bugFixes()
                 noJs()
             };
 
@@ -315,16 +317,15 @@ $(document).ready(function () {
 
                 // Fixing height bug when spam refreshing browser
                 if (sAcc.height() == 0) {
-                    sAcc.css("height", "340px")
+                    sAcc.css("height", options.slideaccess_height)
 
                     var newHeight = options.slideaccess_height / options.slideaccess_width * sAcc.width()
                     sAcc.css("height", newHeight)
                 };
 
                 if (sAcc.width() == options.slideaccess_width) {
-                    sAcc.css("height", "340px")
-                };
-
+                    sAcc.css("height", options.slideaccess_height)
+                }
             };
 
             function noJs() {
@@ -406,20 +407,20 @@ $(document).ready(function () {
 
     /* Options for slideaccess */
     $.fn.slideaccess({
-        'slideaccess_duration': 10000,		// Slideshow speed.
-        'slideaccess_width': 940, 		// Slideshow width (px).
-        'slideaccess_height': 340,		// Slideshow height (px).
-        'slideaccess_img_width': 940, 		// Slideshow width (px).
-        'slideaccess_fade_speed': 265,		// Slideshow fade speed (px).
-        'slideaccess_start_slide': 1,			// Slideshow start node. 1 is default. 'random' generates random slide.
-        'slideaccess_textarea_width': 300,		// Slideshow text area width.		
+        'slideaccess_duration': 10000,	// Slideshow speed.
+        'slideaccess_width': 940,	// Slideshow width (px).
+        'slideaccess_height': 340,	// Slideshow height (px).
+        'slideaccess_img_width': 940,	// Slideshow width (px).
+        'slideaccess_fade_speed': 300,	// Slideshow fade speed (px).
+        'slideaccess_start_slide': 1,	// Slideshow start node. 1 is default. 'random' generates random slide.
+        'slideaccess_textarea_width': 265,	// Slideshow text area width.		
         'slideaccess_textarea_bg': '#000000',	// Slideshow background color.
-        'slideaccess_textarea_opacity': 0.85,		// Slideshow opacity for text area.
-        'slideaccess_textarea_padding': 15,			// Slideshow padding for the text area.
+        'slideaccess_textarea_opacity': 0.85,	// Slideshow opacity for text area.
+        'slideaccess_textarea_padding': 15,	// Slideshow padding for the text area.
         'slideaccess_font_family': 'arial',	// Slideshow font type.
-        'slideaccess_font_color': '#fff',		// Slideshow font size (px).
-        'slideaccess_font_size': 16,			// Slideshow <p> size (px).		
-        'slideaccess_header_size': 28,			// Slideshow header size (px).
+        'slideaccess_font_color': '#fff',	// Slideshow font size (px).
+        'slideaccess_font_size': 16,	// Slideshow <p> size (px).		
+        'slideaccess_header_size': 28,	// Slideshow header size (px).
         'slideaccess_a_color': '#0080dd',	// Slideshow <a> color.
     });
 
